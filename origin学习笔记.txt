@@ -1,0 +1,10 @@
+origin学习笔记
+-----------2018.06.02------------------
+ALT+1打开项目空间
+一个项目可以有几个sheet,book,graph  new或者new window新建
+选中列>Column>Set as X(或者标签L)
+双击A(X)可修改名称，或右键Properties修改，或工具栏Format>object properties
+book界面右键View里面有缩略图
+Excel内容粘贴到book中有粘贴、转置粘贴两种
+列>列数据>赋值（函数、编程）
+xdd
