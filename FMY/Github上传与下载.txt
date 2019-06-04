@@ -1,0 +1,47 @@
+--------首次上传-------------
+1.克隆或下载>复制仓库网址
+2.本地库待上传文件夹右键Git Bash Here
+3.git clone https://github.com/xdd/matlab.study.git
+4.将要上传的文件移入出现的新文件夹
+5.cd 新文件夹名
+6.git add .
+7.git commit -m "提交备注"
+8.git push -u origin master
+9.exit
+
+--------二次上传-------------
+1.将文件移入待上传文件夹，或修改文件后
+2.！！注意看是不是主分支
+回到主分支  git checkout master
+3.git add .
+4.git commit -m "提交备注"
+5.git push -u origin master
+6.exit
+
+
+-----------注意----------------
+如果在网页上改了文档，本地上传时会出错，（因为远程库与本地库不一样）
+会显示error: failed to push some refs to 'https://github.com/xdd/text.git'
+解决办法：git pull --rebase origin master
+          git push -u origin master
+
+------------------------Git下载-------------------------------
+-----下载最新版本----------
+1.右键本地库文件夹Git Bash Here
+2.git clone https://github.com/xdd/matlab.study.git
+
+-----下载历史版本----------
+
+
+
+
+1.先把最新代码备份一下
+2.右键本地库文件夹Git Bash Here
+3.git log
+4.git branch 历史版本号（如77113b6(前七位）)
+5.git checkout 历史版本号
+5.已成功下载，去本地库找吧
+附：reset --hard HEAD commit_id
+    git reset --hard HEAD 0fbd939d01859abb05b59a76568b7cc6a0f76be2
+
+ 
