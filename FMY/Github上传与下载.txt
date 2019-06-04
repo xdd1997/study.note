@@ -30,10 +30,7 @@
 1.右键本地库文件夹Git Bash Here
 2.git clone https://github.com/xdd/matlab.study.git
 
------下载历史版本----------
-
-
-
+-----下载历史版本（未解决）----------
 
 1.先把最新代码备份一下
 2.右键本地库文件夹Git Bash Here
@@ -44,4 +41,5 @@
 附：reset --hard HEAD commit_id
     git reset --hard HEAD 0fbd939d01859abb05b59a76568b7cc6a0f76be2
 
- 
+ -------------关于分支-----------
+ https://blog.csdn.net/qq_26334813/article/details/80503981
