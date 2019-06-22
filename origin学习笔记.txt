@@ -8,3 +8,7 @@ book界面右键View里面有缩略图
 Excel内容粘贴到book中有粘贴、转置粘贴两种
 列>列数据>赋值（函数、编程）
 xdd
+
+
+C:\APP_EXE\MATlab2018b\R2018b\bin\matlab.exe -c 
+C:\APP_EXE\MATlab2018b\R2018b\licenses\license_standalone.lic
