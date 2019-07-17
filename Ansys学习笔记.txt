@@ -1,0 +1,3 @@
+ANSYS常用命令
+/pnum,kp,1		显示关键点编号
+/pnum,line,1	显示线编号
