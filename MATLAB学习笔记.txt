@@ -50,7 +50,7 @@ x=0:0.01:2*pi;y1=sin(x);y2=sin(2*x);
  figure(1)；   plot(y1);
  figure(2)；   plot(y2)；
 
-
+一行写不完要续行     在行末尾加一个空格三个点即可
 
 
 

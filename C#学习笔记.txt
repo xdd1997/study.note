@@ -1,0 +1,38 @@
+string str1=Console.ReadLine();//键盘输入的默认为字符串
+string str1=Console.ReadLine();
+int a1=int.Parse(str1);    //字符串转为数值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
