@@ -40,7 +40,8 @@ set(gca,'XTick',[0 pi 2*pi],'XTickLabel',{'0','pi','2pi'})
  %给坐标轴重标记
 subplot(2,1,1)%窗口模式为2行1列，绘制于第二个子窗口上
 hold on 激活图形叠加，若不关闭，该窗口的叠加绘图模式一直打开着
-subplot(2,2,1)；    plot(x,y1)；   title('y1=x') ；  	%给当前图形添加标题
+subplot(2,2,1)；    plot(x,y1)；   title('y1=x') ；  	%给当前图
+形添加标题
 subplot(2,2,2)；    plot(x,y2)；   title('y2=x^2')；  
 关于plot，个人认为，若无后缀说明，则绘点并连线
 若后缀为线性（只有颜色，线型），则绘点并连线
@@ -51,22 +52,171 @@ x=0:0.01:2*pi;y1=sin(x);y2=sin(2*x);
  figure(2)；   plot(y2)；
 
 一行写不完要续行     在行末尾加一个空格三个点即可
+消息框
+h=msgbox(message,title)
+h=helpdlg('message','title')
 
+    %---------------自定义窗口
+    ------------------------------------------------------
+    %---------------自定义窗口
+    ------------------------------------------------------
+h=dialog('Name','提示','Position',[1300 510 300 150]);
+   uicontrol('Style','text','Unit','Pixels','Position',[10 80 300 50], 
+   ...
+       'FontSize',14,    'Parent',h,    'String','已保存成功');
+   uicontrol('Unit','Pixels','Position',[100 20 100 40], ...
+       'FontSize',13,    'Parent',h,    'String','确定',   
+       'Callback','delete(gcf)', ...
+       'KeyPressFcn','delete(gcf)'); 
+ %---------------定义窗口结束
+ ----------------------------------------------------
 
+ %------------------------按钮的键盘事件---------
+     if double(get(gcf,'CurrentCharacter'))==13
+       pushbutton19_Callback(hObject, eventdata, handles)
+    end
+   %-------------------------结束-----------------
 
+%--------------------变化的文本与数值，写入新文件
+-----------------------------
+dlmwrite([Path '/' FileName '-控制点水平和高程数据-旋转' 
+num2str(theta/pi*180) 
+'°后.txt'],[ KP_UseP X Y Z ],'delimiter','\t','precision',15);
 
+str1='luqil3'
+fid=fopen('D:\result\ProjectName1.txt','wt');
+%str2=str2mat(str1);
+%format=[repmat('%c',1,size(str2,2))'\n']; %生成格式字符串
+%fprintf(fid,format,str2);
+fprintf(fid,str1);
+fclose(fid);
+%-----------------------结束
+------------------------------------------------------
 
+%--------------新建并打开文件夹---------------------
+str1='D:\result\';
+str2='D:/result/';
+%Name_Self=get(handles.edit24,'String');
+Name_Self='AAA';
+datapath=strcat(str1,Name_Self)
+NewFolder=strcat(str2,Name_Self)
+A=mkdir(NewFolder)
 
+dir_name=uigetdir('D:\result')
+%-------------结束-----------------------------------
+%%------------------------新建文件并写入内容(文件写不进C盘
+）-----------------------------------
+ x = 0:.1:1
+A = [x; exp(x)]
 
+fileID = fopen('D:\exp.txt','w')
+fprintf(fileID,'%6s %12s\n','x','exp(x)');
+fprintf(fileID,'%6.2f %12.8f\n',A);
+fclose(fileID);
+% str= [datapath,'\disp_landslip.txt'];
+%%-------------------------结束
+--------------------------------------------------
 
+%-------读取电脑Mac地址--------------------------------
+[~,mac] = dos('ipconfig/all','-echo'); 
+%%-------------结束-------------------------------------
 
+%%----------------------------------读取磁盘
+ID-------------------------------------
+1，dos('diskpart')
+2、输入list disk，按回车
+3、输入select disk 0，按回车
+4、输入detail disk，按回车
+5、输入 exit  退出
+%%---------------------------------结束
+---------------------------------------------
 
+%%-----------------------软件加密方法1：次数-----
+function pushbutton1_Callback(hObject, eventdata, handles)
+PathAndFile='D:\1.txt'
+ if exist(PathAndFile,'file')
+    % fid = fopen('C:\Documents and 
+    Settings\Administrator\temp.txt');
+     fid = fopen(PathAndFile);
+     [times,~] = fscanf(fid,'%d',1)
+     
+     fclose(fid);
+     fid = fopen(PathAndFile,'w');
+     fprintf(fid,'%d',times+1);
+     fclose(fid);
+ else
+     fid = fopen(PathAndFile,'a');
+     fprintf(fid,'%d',1);
 
+     times = 1;
+     fclose(fid);
+ end
+ 
+if times > 20
+    uiwait(warndlg('试用次数已经到达20次，请联系提供方进行注册','
+    警告','modal')); %到达最大使
+    用次数时，弹出模态对
+    话框提示用户。
+    close(handles.figure1);%close Project.figure interface.
+else
+    %Project();%access to Project interface.
+    %prep
+    close(handles.figure1);%close Project.figure interface.
+end
+--------------------结束-------------------------
+%------------------------------------打包
+exe-------------------------------------
+方法1：deploytool
+方法2：mcc -m name1 name2 ...
+方法3：mcc -e name.m
+注：Mcr位置 MATLAB\R2014a\toolbox\compiler\deploy\win64
+%%--------------复制粘贴---------------------------
+clipboard('copy',Selection.Text)    
+clipboard('copy',data) 可将 data 复制到剪贴板。
+txt = clipboard('paste') 将以字符向量形式返回剪贴板上的当前内容
+。如果 clipboard 无法转换这些
+内容，则 txt 为空 ('')。
+data = clipboard('pastespecial') 使用 uiimport 将剪贴板上的内容
+导入到数组中。
 
+%---------------------------关于软件加密
+------------------------------------------
+ %获取本机IP            
+[s, r]=system('ipconfig')
+r=regexp(r,'IPv4 地址 . . . . . . . . . . . . : 
+\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}','match');
+r=r{1}
+r=regexp(r,'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}','match')
+ip=r{1}     %ip为字符char,类型
+disp(['本机IP为：',ip])   
 
-
-
-
+%提取字符串中数字,
+str='1999.jpg';
+A=isstrprop(str,'digit');
+B=str(A)
+C=str2num(B)
+--------------------------------------结束
+-----------------------------------------
+%--------------------周几--------------------------
+a=weekday(now);
+switch a
+            case 1
+        xingqi='周日';
+            case 2
+        xingqi='周一';
+            case 3
+        xingqi='周二';
+            case 4
+        xingqi='周三';
+            case 5
+        xingqi='周四';
+            case 6
+        xingqi='周五';
+            case 7
+        xingqi='周六';
+end
+fprintf('今天是%s\n',xingqi)
+%-----------------------------------结束-------------
 
 
 

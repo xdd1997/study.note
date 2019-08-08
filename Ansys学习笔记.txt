@@ -1,3 +1,22 @@
 ANSYS常用命令
 /pnum,kp,1		显示关键点编号
 /pnum,line,1	显示线编号
+/title,The Analysis of Plane truss     !定义工作标题
+/replot
+/pnum,kp,1     !打开关键点编号，0为关闭
+/pnum,line,1
+
+VDRAG,1,,,,,,L1  !沿L1路径拖拉圆面创建体
+
+D=4             !可以直接定义参数
+C=8
+DZ=C*D
+
+/post1
+pldisp,1       !绘制变形图与原图，若无1则只有变形图
+etable,mforce,smisc,1   !定义单元轴力表
+etable,mstress,ls,1     !定义单元应力表
+plls,mforce,mforce,1    !绘制单元轴力图
+plls,mstress,mstress,1  !绘制单元应力图
+prrsol                  !列出支撑反力
+/exit,nosav             !退出，不保存
