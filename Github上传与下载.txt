@@ -20,8 +20,10 @@
 
 
 -----------注意----------------
-如果在网页上改了文档，本地上传时会出错，（因为远程库与本地库不一样）
-会显示error: failed to push some refs to 'https://github.com/xdd/text.git'
+如果在网页上改了文档，本地上传时会出错，（因为远程库与本地库不
+一样）
+会显示error: failed to push some refs to 
+'https://github.com/xdd/text.git'
 解决办法：git pull --rebase origin master
           git push -u origin master
 
@@ -30,16 +32,9 @@
 1.右键本地库文件夹Git Bash Here
 2.git clone https://github.com/xdd/matlab.study.git
 
------下载历史版本（未解决）----------
+-----下载历史版本（已解决）----------
 
-1.先把最新代码备份一下
-2.右键本地库文件夹Git Bash Here
-3.git log
-4.git branch 历史版本号（如77113b6(前七位）)
-5.git checkout 历史版本号
-5.已成功下载，去本地库找吧
-附：reset --hard HEAD commit_id
-    git reset --hard HEAD 0fbd939d01859abb05b59a76568b7cc6a0f76be2
+https://www.cnblogs.com/xdd1997/p/11321909.html
 
  -------------关于分支-----------
  https://blog.csdn.net/qq_26334813/article/details/80503981
