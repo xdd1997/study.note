@@ -4,22 +4,17 @@ plot(x,y1,'r:',x,y2,'+')                      %y1ÓÃºìÉ«µãÏß£¬y2ÓÃ¼ÓºÅ±íÊ¾£¬ÓÃÓÚ´
 xlabel('xÖá','FontSize',15);                  %×ø±êÖáÃû³Æ×ÖÌå´óĞ¡
 title('plot»æÍ¼½á¹û');                        %±êÌâÃû
 axis([xmin xmax ymin ymax])                   %µ÷×ø±êÖáÏÔÊ¾·¶Î§
-axis on/off                                   %´ò¿ª¹Ø±Õ×ø±êÖá
-Íø¸ñÏß
+axis on/off                                   %´ò¿ª¹Ø±Õ×ø±êÖáÍø¸ñÏß
 grid on
 axis equal/normal
-line([0,1],[2,3])                             %»æÖÆÒ»ÌõÖ±Ïß£¬
-´Óµã£¨0,2£©Á¬Ïò£¨1,3£©
-plot3 mesh meshc meshz                %ÈıÎ¬ÇúÏß¡¢ÇúÃæ
-handles.x=x;                                  %Ç°Á½ĞĞÔÚµÚÒ»
-¸öº¯ÊıÖĞ
+line([0,1],[2,3])                             %»æÖÆÒ»ÌõÖ±Ïß£¬´Óµã£¨0,2£©Á¬Ïò£¨1,3£©
+plot3 mesh meshc meshz                		  %ÈıÎ¬ÇúÏß¡¢ÇúÃæ
+handles.x=x;                                  %Ç°Á½ĞĞÔÚµÚÒ»¸öº¯ÊıÖĞ
 guidate(hObject,handles)
-x=handles.x                                   %´ËĞĞÔÚËùĞèµÄ
-º¯ÊıÖĞ
+x=handles.x                                   %´ËĞĞÔÚËùĞèµÄº¯ÊıÖĞ
 
 deploytool                                    %µ¼³ö.exe
-set(hf,'Color',''w')                           %ĞŞ¸Ä´°¿Ú±³¾°ÑÕ
-É«
+set(hf,'Color',''w')                           %ĞŞ¸Ä´°¿Ú±³¾°ÑÕÉ«
 set(hf,'NumberTitle','off','name','ÑİÊ¾')      %ĞŞ¸ÄÈí¼şÃû×Ö
 pause(n)    % ÔİÍ£ÔËĞĞnÃëºó¼ÌĞøÖ´ĞĞ
 
@@ -37,7 +32,7 @@ hold on ¼¤»îÍ¼ĞÎµş¼Ó£¬Èô²»¹Ø±Õ£¬¸Ã´°¿ÚµÄµş¼Ó»æÍ¼Ä£Ê½Ò»Ö±´ò¿ª×Å
 subplot(2,2,1)£»    plot(x,y1)£»   title('y1=x') £»  	%¸øµ±Ç°Í¼ĞÎÌí¼Ó±êÌâ
 subplot(2,2,2)£»    plot(x,y2)£»   title('y2=x^2')£»  
 ¹ØÓÚplot£¬¸öÈËÈÏÎª£¬ÈôÎŞºó×ºËµÃ÷£¬Ôò»æµã²¢Á¬Ïß
-Èôºó×ºÎªÏßĞÔ£¨Ö»ÓĞÑÕÉ«£¬ÏßĞÍ£©£¬Ôò»æµã²¢Á¬Ïß
+Èôºó×ºÎªÏßĞÍ£¨Ö»ÓĞÑÕÉ«£¬ÏßĞÍ£©£¬Ôò»æµã²¢Á¬Ïß
 Èôºó×ºÎªÊı¾İµã±ê¼Ç£¨Îå½ÇĞÇ£¬¼ÓºÅ£©£¬Ôò½ö»æµã²»Á¬Ïß
 close   close all %¹Ø±Õµ±Ç°Í¼ĞÎ£¬¹Ø±ÕËùÓĞÍ¼ĞÎ
 x=0:0.01:2*pi;y1=sin(x);y2=sin(2*x);
@@ -46,7 +41,7 @@ x=0:0.01:2*pi;y1=sin(x);y2=sin(2*x);
 
 Ò»ĞĞĞ´²»ÍêÒªĞøĞĞ     ÔÚĞĞÄ©Î²¼ÓÒ»¸ö¿Õ¸ñÈı¸öµã¼´¿É
 ÏûÏ¢¿ò
-h=msgbox(message,title)
+h=msgbox('message','title')
 h=helpdlg('message','title')
 
 
@@ -58,6 +53,7 @@ h=dialog('Name','ÌáÊ¾','Position',[860 510 300 150]);
    uicontrol('Unit','Pixels','Position',[100 20 100 40], ...
        'FontSize',13,    'Parent',h,    'String','È·¶¨', ...   
        'Callback','delete(gcf)', ...
+	   'Value',1, ...
        'KeyPressFcn','delete(gcf)'); 
  %---------------¶¨Òå´°¿Ú½áÊø----------------------------------------------------
 
@@ -279,7 +275,14 @@ end
 if ~exist('win64','dir')==0
    mkdir('win64');
 end
------------
+%-----------
+%--------------------ºº×Ö±àÂë×ª»»---------------------------------------------
+str='ºÚ´ó¸ç'
+bianma=unicode2native(str); 
+disp(bianma); 
+pp=native2unicode(bianma);
+disp(pp)
+%----------
 
 
 

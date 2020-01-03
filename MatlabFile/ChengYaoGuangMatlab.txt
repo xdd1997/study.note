@@ -1,0 +1,150 @@
+%%%%%%%%%%%%%%MATLAB GUI设计第三版 陈垚光
+%%%%%%%%%%%%%%%%%%%%第二章
+
+%%%%%eg2-1                %未成功运行
+x1=0:0.02*pi:2*pi;
+y1=[sin(x1);sin(2*x1);sin(3*x1)];
+figure1=figure('PaperPosition',[0.6345 6.345 20.3 15.23],...
+               'PaperSize',[20.98 29.68]);
+  axis1=axes('Parent',figure1);
+  axis(axes1,[0 6.283 -2 2])
+title(axes1,'sin(x)/sin(2x)/sin(3x)');
+xlabel(axes1,'x');
+ylabel(axes1,'y');
+box(axes1,'on');
+hold(axes1,'all');
+plot1=plot(x1,y1);
+text1=text(...
+    'Position',[1.136 -0.9532 0],...
+    'String','y=sin(x)',...
+    'VerticalAlignment','baseline',...
+    'Parent',axes);
+text2=text(...
+    'Position',[2.266 -0.8947 0],...
+    'String','y=sin(x)',...
+    'VerticalAlignment','baseline',...
+    'Parent',axes);
+text3=text(...
+    'Position',[3.395 0.8947 0],...
+    'String','y=sin(x)',...
+    'VerticalAlignment','baseline',...
+    'Parent',axes);
+
+%%%%%%eg2-2
+x=0:0.3*pi:2*pi;
+y=sin(x);
+line(x,y);hold on;
+plot(x,y,'+');
+
+%%%%%%%%如何指定figure绘图？
+
+%%%%%%%eg2-3
+x=0:pi/20:pi*2;
+y1=sin(x);
+y2=sin(x+pi/2);
+plot(x,y1,'r:',x,y2,'+');
+line(([0,7]),[0.5,0.5])
+line(([0,7]),[-0.5,-0.5])
+legend('y1','y2')     %y1,y2 顺序不能写错，legend('off')清除图例
+%%%%%%eg2-4
+x=0:0.1*pi:2*pi;
+y1=sin(x);y2=cos(x);
+y3=sin(x-0.1*pi);
+y4=sin(x+0.1*pi);
+%plot(y1);
+plot(x,y1,'h',x,y2,x,y3,x,y4)    %p为五边形，h为六边形
+% 关于plot，个人认为，若无后缀说明，则绘点并连线
+% 若后缀为线性，则绘点并连线
+% 若后缀为数据点标记，则仅绘点不连线
+title('plot绘图结果');
+xlabel('x','FontSize',15);
+ylabel('y','FontSize',8);
+
+%%%%%%eg2-5
+x=0:pi/20:2*pi;
+y1=sin(x);
+y2=sin(x+pi/2);
+plot(x,y1,'r:',x,y2,'+');
+legend('y1','y2');
+xlabel('x');
+ylabel('y');
+%%%%%%%eg2-6
+x=0:pi/100;2*pi;
+line([0,2*pi],[0,0]);
+hold on;
+plot(x,y);
+axis([0 2*pi -1 1]);%[axis([xmin xmax ymin ymax])
+axis equal;%x,y单位刻度相等
+axis normal;%关闭axis equal命令
+axis on/off;%打开关闭网格线
+axis ij;%原点在左上角
+%%%eg2-7
+ x=0:pi/100:2*pi;
+ y=sin(x);
+ line([0,2*pi],[0,0]);
+ hold on;
+ plot(x,y);
+ axis([0 2*pi -1 1]);
+ %axis('xy');
+ axis('ij');
+ 
+ %%eg2-8
+ alpha=0:0.01:2*pi;
+ x=sin(alpha);y=cos(alpha);
+ plot(x,y);
+ axis([-1.5 1.5 -1.5 1.5]);
+ grid on;
+ axis equal;
+ axis off;%关闭图形坐标轴
+ 
+ %%eg2-9
+ alpha=0:0.01:2*pi;
+ x=2*sin(alpha);y=2*cos(alpha);
+ plot(x,y);
+ axis([-3 3 -3 3]);
+ grid on;
+ axis square;
+ AxisRange=axis;%存储坐标轴范围
+ grid off;
+ %%\it斜体
+ %%左箭头\leftarrow
+ %%eg2-13
+ x=0:0.05:10;
+ y=exp(-0.2*x).*cos(x);
+ plot(x,y);
+ title('\ite^{0.2x}cos(x)','FontWeight','Bold');%%关于题目标注有指数
+ text(5.5,0.4,'\ite^{0.2x}cos(x)');  %%文字标注位置是在坐标轴的位置，也可以出坐标轴
+ %text(5.5,0.6,'\itxdd');%通过位置左边确定文本框（推荐）
+ %gtext('\leftarrowxdd') %通过鼠标点击确定文本位置
+ gtext({'xdd1';'xdd2';'xdd3'}) %通过多次点击鼠标点击确定多个文本的位置
+ 
+ %eg2-16
+ x=0:0.01*pi:4*pi;
+ y1=2*sin(x);y2=cos(x);y3=sin(2*x);y4=cos(2*x);
+ plot(x,[y1;y2;y3]);
+ %plot(x,y1,x,y2,x,y3,x,y4);
+ axis([0 4*pi -2 2.5 ]);
+ set(gca,'XTick',[0 pi 2*pi],'XTickLabel',{'0','pi','2pi'})  %给坐标轴重标记
+ 
+ %eg2-17
+ z=peaks(15);
+ [c,h]=contour(z,6);
+ clabel(c,h);
+ colorbar;
+ x=0:0.01:2*pi;
+ y=sin(x);
+ plot(y);
+ 
+ %eg2-18
+ t=(1/16:1/8:1).*2*pi;
+ x=sin(t);y=cos(t);
+ H=fill(x,y,'r');
+ axis equal;
+ set(H,'LineWidth',5);
+ set(gcf,'color','w','Position',[400 350 250 150],'MenuBar','none');
+ set(gca,'Visible','off');
+ %eg2-19多图绘制于一图上
+ %图形叠印
+%  若当前图形窗口叠加绘图模式关闭hold off，则执行新图形，覆盖掉旧图形；
+%  若当前图形窗口叠加绘图模式开启hold on，则执行新图形，叠加在旧图形上； 
+

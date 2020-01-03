@@ -1,0 +1,16 @@
+#登录
+mysql -u root -pbaby1997
+#退出
+exit
+
+#查看所有的数据库
+show databases;
+#创建一个新的数据库 
+create database xdd1207;
+#使用数据库
+use xdd1207;
+#显示表格
+show tables;
+#显示表格数据 表格名称为Student
+select * from Student;
+

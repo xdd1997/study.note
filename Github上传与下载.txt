@@ -25,7 +25,7 @@
 会显示error: failed to push some refs to 
 'https://github.com/xdd/text.git'
 解决办法：git pull --rebase origin master
-          git push -u origin master
+         git push -u origin master
 
 ------------------------Git下载-------------------------------
 -----下载最新版本----------
@@ -38,3 +38,6 @@ https://www.cnblogs.com/xdd1997/p/11321909.html
 
  -------------关于分支-----------
  https://blog.csdn.net/qq_26334813/article/details/80503981
+ ----------------------------------------------------------------
+
+ 最简单的办法，下载一个github的客户端：GitHub Desktop
